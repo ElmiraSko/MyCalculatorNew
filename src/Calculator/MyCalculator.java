@@ -18,8 +18,8 @@ public class MyCalculator extends JFrame{
     private String textFild = "";
     private String operation = "_";
     private StringBuilder bildNumber = new StringBuilder("");
-    int n1 = 0;
-    int n2 = 0;
+    double n1 = 0;
+    double n2 = 0;
 
     public MyCalculator(){ //Конструктор
         super("Калькулятор");
@@ -126,15 +126,6 @@ public class MyCalculator extends JFrame{
         container.add(panelAll);
         setVisible(true);
     }
-
-    public String getTextFild() {
-        return textFild;
-    }
-
-    public void setTextFild(String textFild) {
-        this.textFild = textFild;
-    }
-
     //создадим слушателя кнопок ButtonListener
     class ButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent ae){
@@ -158,7 +149,7 @@ public class MyCalculator extends JFrame{
                 String result = "";
                 textFild = field.getText().trim();
                 try {
-                    n2 = Integer.parseInt(textFild);
+                    n2 = Double.parseDouble(textFild);
                     if (operation.equals("+")){
                         result = String.valueOf(n1 + n2);
                     }
@@ -199,7 +190,7 @@ public class MyCalculator extends JFrame{
     public void operation(String operation){ //определяет число и арифметическое действие
         textFild = field.getText().trim(); //содержимое поля, (методом trim() отбрасываем пробелы)
         try {
-            n1 = Integer.parseInt(textFild); //метод parseInt - переводит строку в целое число
+            n1 = Double.parseDouble(textFild); //метод parseInt - переводит строку в целое число
             this.operation = operation;
             bildNumber.setLength(0);
             field.setText("");
